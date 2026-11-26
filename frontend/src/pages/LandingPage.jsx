@@ -1,10 +1,17 @@
 import React from 'react'
-import Heading from './components/Heading.jsx'
-import Footer from './components/Footer.jsx'
-import Cards from './components/Cards.jsx'
-import landingImg from './assets/landing-page-img.svg'
+import Heading from '../components/Heading.jsx'
+import Footer from '../components/Footer.jsx'
+import Cards from '../components/Cards.jsx'
+import landingImg from '../assets/landing-page-img.svg'
+import { useNavigate } from 'react-router-dom'
+import LoginPage from './LoginPage.jsx'
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate('/login');
+  }
   return (
     <div className="flex min-h-screen flex-col">
       <Heading />
@@ -23,7 +30,7 @@ const LandingPage = () => {
             <button
               type="button"
               className="mt-8 h-12 rounded-lg border border-[#284F3E] bg-[#284F3E] px-8 text-base font-semibold text-white cursor-pointer transition-colors hover:bg-[#1F4032]"
-            >
+             onClick={handleNavigate}>
               Login
             </button>
           </section>

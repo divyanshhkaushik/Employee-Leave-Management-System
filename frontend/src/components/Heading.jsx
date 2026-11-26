@@ -1,7 +1,14 @@
 import React from 'react'
 import logo from '../assets/elms-logo.svg'
+import { useNavigate } from 'react-router-dom'
+import LoginPage from '../pages/LoginPage.jsx'
 
 const Heading = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate('/login');
+  }
   return (
     <header className="relative flex h-20 w-full items-center justify-between bg-[#FAFAF6] px-5 sm:px-12">
       <img
@@ -16,7 +23,7 @@ const Heading = () => {
 
       <button
         className="h-11 min-w-[82px] shrink-0 rounded-lg border border-[#284F3E] bg-[#284F3E] text-base font-semibold text-white cursor-pointer hover:bg-[#1F4032] sm:min-w-24"
-        type="button"
+        type="button" onClick={handleNavigate}
       >
         Login
       </button>

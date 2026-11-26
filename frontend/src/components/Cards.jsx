@@ -1,4 +1,6 @@
 import React from 'react'
+import { ArrowUpRight } from 'lucide-react'
+
 
 const Cards = () => {
   const cards = [
