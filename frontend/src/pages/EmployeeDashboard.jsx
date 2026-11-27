@@ -12,6 +12,8 @@ import LeaveCalendar from '../components/LeaveCalender.jsx'
 import HolidayCard from '../components/HolidayCard.jsx'
 
 const EmployeeDashboard = () => {
+  const navigate = useNavigate()
+
   return (
     <div id="top" className="flex min-h-screen flex-col bg-[#FAFAF6]">
       <Heading />
@@ -45,6 +47,7 @@ const EmployeeDashboard = () => {
       <div className="mx-auto w-full max-w-7xl px-5 pb-10 sm:px-12 lg:px-20">
         <button
           type="button"
+          onClick={() => navigate('/leave-form')}
           className="h-12 rounded-lg bg-[#284F3E] px-6 text-sm font-bold text-white shadow-[0_8px_20px_rgba(40,79,62,0.16)] transition-colors hover:bg-[#1F4032] focus:outline-none focus:ring-4 focus:ring-[#284F3E]/20"
         >
           Apply for Leave
