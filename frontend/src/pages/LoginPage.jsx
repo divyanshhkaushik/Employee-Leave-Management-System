@@ -13,11 +13,8 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate('/dashboard');
-  }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
 
@@ -27,10 +24,33 @@ const LoginPage = () => {
     }
 
     setLoading(true)
-    window.setTimeout(() => {
+
+    try {
+      const response = await fetch('http://localhost:3000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim(),
+          password,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        setError(data.message || 'Login failed. Please try again.')
+        return
+      }
+
+      navigate('/dashboard', { replace: true })
+    } catch (error) {
+      console.error('Login error:', error)
+      setError('Unable to connect to the server. Please try again later.')
+    } finally {
       setLoading(false)
-      handleNavigate()
-    }, 700)
+    }
   }
 
   return (
